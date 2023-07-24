@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        
+        const year = prompt("Який ваш рік народження?");
+        const city = prompt("В якому місті ви живете?");
+        const favSport = prompt("Який ваш улюблений вид спорту?");
+        const champions = [
+            {sport: "футбол", champion: "Ліонель Мессі"},
+            {sport: "теніс", champion: "Андре Агассі"},
+            {sport: "бадмінтон", champion: "Лін Дан"}
+        ]
+        const capitals = [
+            {country: "України", capital: "Київ"},
+            {country: "США", capital: "Вашингтон"},
+            {country: "Великобританії", capital: "Лондон"}
+        ]
+
+        //рахуємо вік по року
+        function getAge() {
+                return 2023 - Number(year);
+            }
+        
+        //створюємо повідомлення зі вказанням віку
+        function yearReply() {
+            if ((year === null) || (year === "" )) {
+                return "Шкода, що Ви не захотіли ввести свій рік народження";
+            } 
+                return "Ваш вік - " + `${getAge()}`;
+            }
+        
+
+        //знаходимо елемент масиву, де значення capital дорівнює введеному користувачем значенню міста
+        const capital = capitals.find(({capital}) => capital === city);
+        
+
+        function cityReply() {
+            //якщо користувач натиснув Cancel або OK
+            if ((city === null) || (city === "" )) {
+                return "Шкода, що Ви не захотіли ввести своє місто";
+            }
+            //якщо введене значення міста не знайдено серед значень елементів масиву
+            if (capital === undefined) {
+                    return `Ви живете у місті ${city}`;
+                } 
+                //якщо значення знайдене
+                    return `Ви живете у столиці ${capital.country}.`;
+                }
+
+        //знаходимо елемент масиву, де значення sport дорівнює введеному користувачем спорту
+        const champ = champions.find(({sport}) => sport === favSport);
+        
+
+        function favSportReply() {
+            //якщо користувач натиснув Cancel або OK
+            if ((favSport === null) || (favSport === "" )) {
+                return "Шкода, що Ви не захотіли ввести свій улюблений вид спорту";
+            }
+                //якщо введене значення спорту не знайдено серед значень елементів масиву
+                if (champ === undefined) {
+                    return "";
+                } 
+                    //якщо значення знайдене
+                    return `Круто! Хочете стати як ${champ.champion}`;
+                }
+            
+
+        //виводимо відповідні повідомлення
+        alert (`${yearReply()}\n"${cityReply()}\n${favSportReply()}`);
+
+    </script>
+</body>
+</html>
